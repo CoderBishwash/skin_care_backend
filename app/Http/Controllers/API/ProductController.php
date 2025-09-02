@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Doctor;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-
 class ProductController extends Controller
 {
     /**
@@ -40,4 +40,5 @@ class ProductController extends Controller
             'data' => $product
         ]);
     }
+
 }

@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\ProductController;
+use App\Http\Controllers\API\DoctorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +30,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
 Route::get('products', [ProductController::class, 'index']);      // List all products
 Route::get('products/{id}', [ProductController::class, 'show']);  // Get single product
+
+Route::get('doctors', [DoctorController::class, 'index']); // get all doctors
+Route::get('doctor/{id}', [DoctorController::class, 'show']); // get single doctor with products
+Route::get('doctors/{id}/products', [DoctorController::class, 'productsByDoctor']);
