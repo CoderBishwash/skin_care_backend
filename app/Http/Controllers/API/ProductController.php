@@ -14,7 +14,19 @@ class ProductController extends Controller
      */
     public function index()
     {
+        
         $products = Product::with('recommendedByDoctors:id,name,specialization')->get();
+        
+            // Format products
+        $products->transform(function ($product) {
+            $product->image = $product->image
+                ? url($product->image)
+                : url('image/product/default.jpg');
+            return $product;
+        });
+
+        
+
         return response()->json([
             'success' => true,
             'data' => $products
@@ -34,6 +46,10 @@ class ProductController extends Controller
                 'message' => 'Product not found'
             ], 404);
         }
+  // ✅ Same image URL logic as index()
+        $product->image = $product->image
+            ? url($product->image)
+            : url('image/product/default.jpg');
 
         return response()->json([
             'success' => true,

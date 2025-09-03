@@ -15,4 +15,9 @@ class Product extends Model
     {
         return $this->belongsToMany(Doctor::class, 'doctor_product', 'product_id', 'doctor_id');
     }
+    public function usersInRoutine()
+{
+    return $this->belongsToMany(User::class, 'routines', 'product_id', 'user_id');
+}
+
 }
